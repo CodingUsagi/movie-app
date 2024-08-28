@@ -11,7 +11,7 @@ export function CastCard({
   return (
     <div className="text-white my-10">
       <ul className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 text-white">
-        <li className="flex flex-col">
+        <li key={director.id} className="flex flex-col">
           <span className="font-semibold text-sm md:text-base">
             {director.name}
           </span>

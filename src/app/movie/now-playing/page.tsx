@@ -24,7 +24,7 @@ export default async function NowPlayingMoviesPage() {
 
           return (
             <Link href={`/movie/${movie.id}-${movieTitle}`}>
-              <li key={movie.title}>
+              <li key={movie.id}>
                 <Card movie={movie} />
               </li>
             </Link>

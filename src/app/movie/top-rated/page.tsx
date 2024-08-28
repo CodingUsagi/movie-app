@@ -22,7 +22,7 @@ export default async function TopRatedMoviesPage() {
 
           return (
             <Link href={`/movie/${movie.id}-${movieTitle}`}>
-              <li key={movie.title}>
+              <li key={movie.id}>
                 <Card movie={movie} />
               </li>
             </Link>
