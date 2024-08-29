@@ -1,9 +1,14 @@
 import { getNowPlayingMovies, Movie } from "@/app/actions/movies";
-import { Card } from "../_components/card";
+import { MovieCard } from "../_components/movie-card";
 import Link from "next/link";
+import { Error } from "../_components/error";
 
 export default async function NowPlayingMoviesPage() {
   const movies = (await getNowPlayingMovies()).results;
+
+  if (!movies) {
+    return <Error />;
+  }
 
   return (
     <div className="flex flex-col justify-center items-center pt-5 lg:pt-10 w-screen overflow-x-hidden bg-white">
@@ -23,11 +28,11 @@ export default async function NowPlayingMoviesPage() {
           }
 
           return (
-            <Link href={`/movie/${movie.id}-${movieTitle}`}>
-              <li key={movie.id}>
-                <Card movie={movie} />
-              </li>
-            </Link>
+            <li key={movie.id}>
+              <Link href={`/movie/${movie.id}-${movieTitle}`}>
+                <MovieCard movie={movie} />
+              </Link>
+            </li>
           );
         })}
       </ul>

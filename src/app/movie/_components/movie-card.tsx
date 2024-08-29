@@ -1,9 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
-import { Movie } from "@/app/actions/movies";
+import type { Movie } from "@/app/actions/movies";
 import { CircularProgressBar } from "@/components/section/components/trending/circular-progress-bar";
 
-export function Card({ movie }: { movie: Movie }) {
+export function MovieCard({ movie }: { movie: Movie }) {
   const percentage = (movie.vote_average * 10).toFixed(0);
 
   return (

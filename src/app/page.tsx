@@ -10,16 +10,16 @@ import LatestTrailers from "@/components/section/components/trailers/latest-trai
 export default async function Home() {
   const trendingMoviesToday = (await getTrendingMoviesToday()).results;
   const trendingMoviesThisWeek = (await getTrendingMoviesThisWeek()).results;
-  const populars = (await getPopularMovies()).results;
+  const popularMovies = (await getPopularMovies()).results;
 
   return (
     <main className="2xl:px-20 3xl:px-32 px-10 bg-white w-screen">
-      <Banner populars={populars} />
+      <Banner popularMovies={popularMovies} />
       <Trending
         trendingMoviesToday={trendingMoviesToday}
         trendingMoviesThisWeek={trendingMoviesThisWeek}
       />
-      <LatestTrailers populars={populars} />
+      <LatestTrailers popularMovies={popularMovies} />
     </main>
   );
 }

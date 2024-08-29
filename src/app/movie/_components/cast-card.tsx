@@ -1,5 +1,4 @@
 import { Cast, Crew } from "@/app/actions/movies";
-import { dir } from "console";
 
 export function CastCard({
   director,

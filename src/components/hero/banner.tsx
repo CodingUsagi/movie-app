@@ -4,9 +4,9 @@ import { Movie } from "@/app/actions/movies";
 import { motion } from "framer-motion";
 import { SearchForm } from "./search-form";
 
-export const Banner = ({ populars }: { populars: Movie[] }) => {
+export const Banner = ({ popularMovies }: { popularMovies: Movie[] }) => {
   const randomNmber = Math.floor(Math.random() * 8);
-  const backgroundImageUrl = `https://image.tmdb.org/t/p/original${populars[randomNmber].backdrop_path}`;
+  const backgroundImageUrl = `https://image.tmdb.org/t/p/original${popularMovies[randomNmber].backdrop_path}`;
 
   return (
     <div

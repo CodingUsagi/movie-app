@@ -5,8 +5,13 @@ import {
 } from "@/app/actions/movies";
 import { Card } from "./card";
 import { Blur } from "./blur";
+import { Error } from "./error";
 
 export function TrendingMovies({ movies }: { movies: Movie[] }) {
+  if (!movies) {
+    return <Error />;
+  }
+
   return (
     <div className="relative -z-0">
       <ul className="flex flex-row space-x-5 text-black pr-10 py-5 overflow-x-scroll">

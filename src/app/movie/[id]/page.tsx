@@ -1,9 +1,10 @@
 import { Crew, getMovieById, getMovieCasts } from "@/app/actions/movies";
-import Image from "next/image";
 import { CircularProgressBar } from "../_components/circular-progress-bar";
-import { CastCard } from "../_components/castCard";
+import { CastCard } from "../_components/cast-card";
 import { PlayTrailer } from "../_components/playTrailer";
 import imageIcon from "../../../../public/imageIcon.svg";
+import { MovieImage } from "../_components/movie-image";
+import { Error } from "../_components/error";
 
 export default async function MovieDetailsPage({
   params: { id },
@@ -37,15 +38,10 @@ export default async function MovieDetailsPage({
         }}
       >
         <div className="flex lg:space-x-10 xl:space-x-20 2xl:space-x-36 lg:space-y-0 space-y-20 md:space-y-32 h-full flex-col items-center lg:items-start lg:px-10 2xl:px-28 lg:flex-row w-screen">
-          <div className="relative flex justify-center w-[20rem] h-[25rem] md:w-[30rem] md:h-[38rem] xl:w-[450px] xl:h-[600px] mt-16 lg:mt-10 xl:mt-20">
-            <Image
-              src={imageSrc}
-              alt="title"
-              priority
-              fill
-              className="rounded-md bg-gray-300 object-cover"
-            />
-          </div>
+          <MovieImage
+            src={`${process.env.NEXT_PUBLIC_IMAGEBASEURL}${movie.poster_path}`}
+          />
+
           <section className="text-white px-5 md:px-16 xl:px-5 lg:w-[40rem] xl:w-[60rem] lg:pt-10 xl:pt-20">
             <h1 className="text-2xl md:text-3xl xl:text-4xl font-semibold">
               {movie.title} (
