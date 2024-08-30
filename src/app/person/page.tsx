@@ -4,7 +4,7 @@ import { PeopleCard } from "./_components/people-card";
 
 export default async function NowPlayingMoviesPage() {
   const people = (await getPopularPeople()).results;
-  console.log(people);
+
   return (
     <div className="flex flex-col justify-center items-center pt-5 lg:pt-10 lg:px-5 2xl:px-28 w-screen overflow-x-hidden bg-white">
       <h2 className="text-black lg:text-3xl mt-2 lg:mt-5">Popular People</h2>

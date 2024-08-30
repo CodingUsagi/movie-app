@@ -1,6 +1,6 @@
 import { SearchPersonResult } from "@/app/actions/movies";
 import Image from "next/image";
-import imageIcon from "../../../../public/imageIcon.svg";
+import imageIcon from "@/images/imageIcon.svg";
 
 export function PeopleCard({
   person,

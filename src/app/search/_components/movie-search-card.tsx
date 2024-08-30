@@ -1,6 +1,6 @@
 import { SearchMovieResult } from "@/app/actions/movies";
 import Image from "next/image";
-import imageIcon from "../../../../public/imageIcon.svg";
+import imageIcon from "@/images/imageIcon.svg";
 import Link from "next/link";
 
 export function MovieSearchCard({ result }: { result: SearchMovieResult }) {
