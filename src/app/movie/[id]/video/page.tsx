@@ -1,14 +1,12 @@
-import { notFound } from "next/navigation";
-import ModalBackdrop from "../../_components/modal-backdrop";
-import { useSearchParams } from "next/navigation";
+import ModalBackdrop from "@/app/movie/_components/modal-backdrop";
 import { getMovieVideo } from "@/app/actions/movies";
 
 export default async function InterceptedVideoPage({
-  params: { movieId },
+  searchParams: { query },
 }: {
-  params: { movieId: string };
+  searchParams: { query: string };
 }) {
-  const videos = (await getMovieVideo(+movieId)).results;
+  const videos = (await getMovieVideo(+query)).results;
 
   const videoSrc =
     `${process.env.NEXT_PUBLIC_YOUTUBE_BASEURL}` + `${videos[1]?.key}`;

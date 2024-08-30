@@ -3,132 +3,87 @@
 import { redirect } from "next/navigation";
 
 export const getTrendingMoviesToday = async (timeWindow: string = "day") => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/trending/movie/${timeWindow}?api_key=${process.env.APIKEY}`
-    );
-
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/trending/movie/${timeWindow}?api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const getTrendingMoviesThisWeek = async (
   timeWindow: string = "week"
 ) => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/trending/movie/${timeWindow}?api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/trending/movie/${timeWindow}?api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const getPopularMovies = async (timeWindow: string = "week") => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/movie/popular?language=en-US&page=1&api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/movie/popular?language=en-US&page=1&api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const getMovieVideo = async (id: number) => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/movie/${id}/videos?language=en-US&api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/movie/${id}/videos?language=en-US&api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const getMovieById = async (id: string) => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/movie/${id}?api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/movie/${id}?api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const getMovieCasts = async (id: string) => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/movie/${id}/credits?language=en-US'&api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/movie/${id}/credits?language=en-US'&api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const search = async (keyword: string) => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/search/multi?query=${keyword}&include_adult=false&language=en-US&page=1&api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/search/multi?query=${keyword}&include_adult=false&language=en-US&page=1&api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const searchFormAction = async (prevState: any, formData: FormData) => {
-  try {
-    const searchText = formData.get("search") as string;
-    if (!searchText) {
-      return {
-        error: "no text entered",
-      };
-    }
-    const searchKeyword = searchText.split(" ").join("+");
-
-    redirect(`/search?query=${searchKeyword}`);
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
+  const searchText = formData.get("search") as string;
+  if (!searchText) {
+    return {
+      error: "no text entered",
+    };
   }
+  const searchKeyword = searchText.split(" ").join("+");
+
+  redirect(`/search?query=${searchKeyword}`);
 };
 
 export const getNowPlayingMovies = async () => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/movie/now_playing?language=en-US&page=1&api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/movie/now_playing?language=en-US&page=1&api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const getUpcomingMovies = async () => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/movie/upcoming?language=en-US&page=1&api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/movie/upcoming?language=en-US&page=1&api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export const getTopRatedMovies = async () => {
-  try {
-    const response = await fetch(
-      `${process.env.BASEURL}/movie/top_rated?language=en-US&page=1&api_key=${process.env.APIKEY}`
-    );
-    return response.json();
-  } catch (error) {
-    return { message: "Unable to fetch data..." };
-  }
+  const response = await fetch(
+    `${process.env.BASEURL}/movie/top_rated?language=en-US&page=1&api_key=${process.env.APIKEY}`
+  );
+  return response.json();
 };
 
 export type Movie = {

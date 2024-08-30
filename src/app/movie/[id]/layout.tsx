@@ -1,4 +1,4 @@
-export function VideoLayout({
+export default function MovieLayout({
   children,
   modal,
 }: {

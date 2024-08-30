@@ -9,7 +9,7 @@ export function PlayTrailer({ movieId }: { movieId: string }) {
     <div
       className="flex items-center w-40 cursor-pointer hover:text-white/60"
       onClick={() => {
-        router.push(`/movie/video/${movieId}`);
+        router.push(`/movie/${movieId}/video?query=${movieId}`);
       }}
     >
       <svg
