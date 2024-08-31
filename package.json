@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "framer-motion": "^11.3.24",
+    "mobile-detect": "^1.4.5",
     "next": "14.2.5",
     "next-video": "^1.1.4",
     "react": "^18",

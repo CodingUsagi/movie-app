@@ -19,7 +19,7 @@ export function Card({ movie }: { movie: Movie }) {
   }
 
   return (
-    <Link href={`movie/${movie.id}-${movieTitle}`}>
+    <Link href={`movies/${movie.id}-${movieTitle}`}>
       <div className="tracking-wider w-36 2xl:w-44 shadow-lg h-full py-2 rounded-lg">
         <div className="relative">
           <Image

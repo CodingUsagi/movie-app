@@ -12,7 +12,7 @@ export function MovieSearchCard({ result }: { result: SearchMovieResult }) {
 
   return (
     <div className="border border-gray-200 shadow-lg flex items-center space-x-5 rounded-lg h-40 w-full">
-      <Link href={`movie/${result.id}-${result.title}`}>
+      <Link href={`movies/${result.id}-${result.title}`}>
         <div className="relative w-28 h-40">
           <Image
             src={imageSrc}

@@ -1,5 +1,5 @@
-import ModalBackdrop from "@/app/movie/_components/modal-backdrop";
 import { getMovieVideo } from "@/app/actions/movies";
+import ModalBackdrop from "@/app/movies/_components/modal-backdrop";
 
 export default async function InterceptedVideoPage({
   searchParams: { query },
