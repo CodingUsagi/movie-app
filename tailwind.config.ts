@@ -14,7 +14,7 @@ const config: Config = {
       },
     },
     animation: {
-      "carousel-move": "carousel-move var(--duration, 80s) infinite",
+      "carousel-move": "carousel-move var(--duration, 60s) infinite",
       "play-state": "paused",
     },
     extend: {
