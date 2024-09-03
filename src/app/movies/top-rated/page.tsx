@@ -23,6 +23,8 @@ export default async function TopRatedMoviesPage() {
 
           if (movie.title.indexOf(" ") > 0) {
             movieTitle = movie.title.replace(/\s+/g, "-").toLowerCase();
+          } else {
+            movieTitle = movie.title.toLowerCase();
           }
 
           return (
