@@ -15,11 +15,11 @@ export function TrendingToggle({
       {/* Switch */}
       <div
         className={`
-            z-0 left-0 absolute bg-black h-8 md:h-10 rounded-full shadow-md transform duration-300 ease-in-out ${
+            left-0 absolute bg-black h-8 md:h-10 rounded-full shadow-md transform duration-300 ease-in-out ${
               toggle ? "w-16 md:w-20" : toggleClass
             }`}
       ></div>
-      <div className="flex justify-between items-center z-50 px-2 md:px-3 space-x-4 md:space-x-6">
+      <div className="flex justify-between items-center px-2 md:px-3 space-x-4 md:space-x-6">
         <span className={`${toggle ? "text-white" : "text-black"}`}>Today</span>
 
         <span className={`${toggle ? "text-black" : "text-white"} pl-2`}>

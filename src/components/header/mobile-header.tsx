@@ -1,26 +1,61 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { MobileNavbar } from "./mobile-navbar";
+
 export function MobileHeader() {
+  const [isToggled, setIsToggled] = useState(false);
+
+  const items = ["Movies", "People"];
+
   return (
-    <label
-      className="relative z-40 cursor-pointer px-3 py-6"
-      htmlFor="mobile-menu"
-    >
-      <input className="peer hidden" type="checkbox" id="mobile-menu" />
-      <div className="relative z-50 block h-[1px] w-7 bg-black bg-transparent content-[''] before:absolute before:top-[-0.35rem] before:z-50 before:block before:h-full before:w-full before:bg-black before:transition-all before:duration-200 before:ease-out before:content-[''] after:absolute after:right-0 after:bottom-[-0.35rem] after:block after:h-full after:w-full after:bg-black after:transition-all after:duration-200 after:ease-out after:content-[''] peer-checked:bg-transparent before:peer-checked:top-0 before:peer-checked:w-full before:peer-checked:rotate-45 before:peer-checked:transform after:peer-checked:bottom-0 after:peer-checked:w-full after:peer-checked:-rotate-45 after:peer-checked:transform"></div>
-      <div className="fixed inset-0 z-40 hidden h-full w-full bg-black/50 backdrop-blur-sm peer-checked:block">
-        &nbsp;
-      </div>
-      <div className="fixed top-0 right-0 z-40 h-full w-full translate-x-full overflow-y-auto overscroll-y-none transition duration-500 peer-checked:translate-x-0">
-        <div className="float-right min-h-full w-[85%] bg-white px-6 pt-12 shadow-2xl">
-          <menu>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
-          </menu>
+    <div className="w-screen bg-[#032541] flex justify-between items-center px-10">
+      <Link href="/" className="py-5 pl-2 xl:pl-20">
+        <div className="w-24 md:w-36">
+          <Image
+            width={300}
+            height={300}
+            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+            alt="logo"
+            priority
+            className="object-cover"
+          />
         </div>
-      </div>
-    </label>
+      </Link>
+      <nav className="relative">
+        <button onClick={() => setIsToggled(!isToggled)} className="py-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+        {isToggled && (
+          <menu className="absolute bg-gray-200 top-10 right-5 z-20 rounded-lg w-44 md:w-52">
+            <ul className="text-gray-800 text-base md:text-lg flex flex-col items-center justify-center space-y-5 h-full py-5">
+              <li className="">
+                <h6 className="mb-2">Movies</h6>
+                <MobileNavbar type="Movies" setIsToggled={setIsToggled} />
+              </li>
+              <li className="pl-5">
+                <h6>People</h6>
+                <MobileNavbar type="People" setIsToggled={setIsToggled} />
+              </li>
+            </ul>
+          </menu>
+        )}
+      </nav>
+    </div>
   );
 }
