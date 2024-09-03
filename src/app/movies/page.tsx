@@ -27,7 +27,7 @@ export default async function PopularMoviesPage() {
 
           return (
             <li key={movie.title}>
-              <Link href={`/movie/${movie.id}-${movieTitle}`}>
+              <Link href={`/movies/${movie.id}-${movieTitle}`}>
                 <MovieCard movie={movie} />
               </Link>
             </li>
