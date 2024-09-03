@@ -27,7 +27,7 @@ export default async function UpcomingMoviesPage() {
 
           return (
             <li key={movie.id}>
-              <Link href={`/movie/${movie.id}-${movieTitle}`}>
+              <Link href={`/movies/${movie.id}-${movieTitle}`}>
                 <MovieCard movie={movie} />
               </Link>
             </li>
