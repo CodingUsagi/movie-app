@@ -1,4 +1,9 @@
-import { Crew, getMovieById, getMovieCasts } from "@/app/actions/movies";
+import {
+  Crew,
+  getMovieById,
+  getMovieCasts,
+  getMovieVideo,
+} from "@/app/actions/movies";
 import { CircularProgressBar } from "../_components/circular-progress-bar";
 import { CastCard } from "../_components/cast-card";
 import { PlayTrailer } from "../_components/playTrailer";
@@ -13,6 +18,7 @@ export default async function MovieDetailsPage({
   const movieId = id.split("-")[0];
   const movie = await getMovieById(movieId);
   const casts = await getMovieCasts(movieId);
+  const videos = (await getMovieVideo(+movieId)).results;
 
   const backgroundImageUrl = `${process.env.NEXT_PUBLIC_IMAGEBASEURL}${movie.backdrop_path}`;
   let imageSrc: string;
@@ -68,7 +74,7 @@ export default async function MovieDetailsPage({
             <div className="mt-10 flex items-center space-x-5 text-sm md:text-base">
               <CircularProgressBar percentage={+percentage} />
               <h3>User Score</h3>
-              <PlayTrailer movieId={movieId} />
+              {videos.length > 0 && <PlayTrailer movieId={movieId} />}
             </div>
             <p className="italic text-base md:text-lg text-white/60 mt-10 md:mt-5 lg:mt-10">
               {movie.tagline}
