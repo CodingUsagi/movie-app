@@ -59,7 +59,7 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
           <li
             key={index}
             onClick={() => {
-              setPause(false);
+              setPause(true);
               setMustFinish(true);
             }}
           >
