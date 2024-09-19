@@ -45,10 +45,6 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
 
   return (
     <motion.ul
-      onClick={() => {
-        setPause(!pause);
-        setMustFinish(true);
-      }}
       ref={ref}
       style={{ x: xTranslation }}
       onHoverStart={() => {
