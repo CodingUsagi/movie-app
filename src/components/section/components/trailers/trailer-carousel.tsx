@@ -10,6 +10,7 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
   const [pause, setPause] = useState(false);
   let [ref, { width }] = useMeasure();
   const [mustFinish, setMustFinish] = useState(false);
+  const [rerender, setRerender] = useState(false);
 
   const xTranslation = useMotionValue(0);
 
@@ -23,6 +24,7 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
         duration: pause ? 10000 : 300,
         onComplete: () => {
           setMustFinish(false);
+          setRerender(!rerender);
         },
       });
     } else {
@@ -36,7 +38,7 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
     }
 
     return controls.stop;
-  }, [xTranslation, width, mustFinish, pause]);
+  }, [xTranslation, width, rerender, mustFinish, pause]);
 
   return (
     <motion.ul
