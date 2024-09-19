@@ -56,7 +56,13 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
     >
       {[...movies, ...movies].map((movie: Movie, index: number) => {
         return (
-          <li key={index}>
+          <li
+            key={index}
+            onClick={() => {
+              setPause(false);
+              setMustFinish(true);
+            }}
+          >
             <VideoCard movieId={movie.id} />
           </li>
         );
