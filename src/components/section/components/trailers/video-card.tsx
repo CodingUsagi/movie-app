@@ -16,5 +16,9 @@ export function VideoCard({ movieId }: { movieId: number }) {
     });
   }, [movieId]);
 
-  return <EmbedYoutubeVideo source={videoKey} />;
+  return (
+    <div>
+      <EmbedYoutubeVideo source={videoKey} />
+    </div>
+  );
 }

@@ -11,12 +11,15 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
   let [ref, { width }] = useMeasure();
   const [mustFinish, setMustFinish] = useState(false);
   const [rerender, setRerender] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   const xTranslation = useMotionValue(0);
 
   useEffect(() => {
     let controls;
     let finalPosition = -width * 20;
+
+    if (clicked) return;
 
     if (mustFinish) {
       controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
@@ -38,10 +41,14 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
     }
 
     return controls.stop;
-  }, [xTranslation, width, rerender, mustFinish, pause]);
+  }, [xTranslation, width, rerender, mustFinish, pause, clicked]);
 
   return (
     <motion.ul
+      onClick={() => {
+        setPause(!pause);
+        setMustFinish(true);
+      }}
       ref={ref}
       style={{ x: xTranslation }}
       onHoverStart={() => {
