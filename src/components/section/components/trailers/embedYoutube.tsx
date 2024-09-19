@@ -4,13 +4,7 @@ import { useEffect, useState } from "react";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
-export function EmbedYoutubeVideo({
-  source,
-  movieId,
-}: {
-  source: string;
-  movieId: number;
-}) {
+export function EmbedYoutubeVideo({ source }: { source: string }) {
   const [hasWindow, setHasWindow] = useState(false);
 
   useEffect(() => {
@@ -20,7 +14,7 @@ export function EmbedYoutubeVideo({
   }, []);
 
   return (
-    <div className="w-[20rem] md:w-[36rem] aspect-video rounded-md">
+    <div className="w-[15rem] md:w-[25rem] aspect-video">
       <LiteYouTubeEmbed id={source} title="Youtube Player" poster="hqdefault" />
     </div>
   );

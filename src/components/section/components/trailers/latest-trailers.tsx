@@ -1,6 +1,6 @@
 import { Movie } from "@/app/actions/movies";
-import { TrailerCarousel } from "./trailer-carousel";
 import { Error } from "./error";
+import { TrailerCarousel } from "./trailer-carousel";
 
 export default function LatestTrailers({
   popularMovies,
@@ -19,15 +19,7 @@ export default function LatestTrailers({
         </h6>
       </div>
 
-      <ul className="flex flex-row space-x-5 text-black pr-10 my-10 relative animate-carousel-move">
-        {popularMovies.map((movie: Movie) => {
-          return (
-            <li key={movie.id}>
-              <TrailerCarousel movieId={movie.id} />
-            </li>
-          );
-        })}
-      </ul>
+      <TrailerCarousel movies={popularMovies} />
     </section>
   );
 }
