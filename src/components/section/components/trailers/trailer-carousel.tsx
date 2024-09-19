@@ -52,7 +52,7 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
         setPause(false);
         setMustFinish(true);
       }}
-      className="flex flex-row space-x-5 text-black pr-10 my-10"
+      className="relative flex flex-row space-x-5 text-black pr-10 my-10"
     >
       {[...movies, ...movies].map((movie: Movie, index: number) => {
         return (
