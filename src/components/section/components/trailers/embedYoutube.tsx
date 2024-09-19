@@ -14,7 +14,7 @@ export function EmbedYoutubeVideo({ source }: { source: string }) {
   }, []);
 
   return (
-    <div className="w-[25rem] aspect-video p-2 relative">
+    <div className="w-[20rem] lg:w-[25rem] aspect-video p-2 relative">
       <LiteYouTubeEmbed id={source} title="Youtube Player" poster="hqdefault" />
     </div>
   );
