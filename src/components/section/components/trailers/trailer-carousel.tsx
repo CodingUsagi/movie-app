@@ -59,8 +59,7 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
           <li
             key={index}
             onClick={() => {
-              setPause(!pause);
-              setMustFinish(true);
+              setPause(false);
             }}
           >
             <VideoCard movieId={movie.id} />
