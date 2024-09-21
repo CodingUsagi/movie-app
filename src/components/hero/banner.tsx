@@ -18,12 +18,14 @@ export const Banner = ({ popularMovies }: { popularMovies: Movie[] }) => {
       <div className="px-5 md:px-10 pt-5 md:pt-20 w-full">
         <motion.p
           initial={{
-            x: "50vw",
+            opacity: 0,
+            x: "40vw",
             scale: 1.5,
             color: "#EA775C",
           }}
           animate={{
-            translateX: "-50vw",
+            opacity: 1,
+            x: 0,
             scale: 1,
             color: "#fff",
           }}
