@@ -18,10 +18,24 @@ export function TrendingToggle({
               toggle ? "w-16 md:w-20" : toggleClass
             }`}
       ></div>
-      <div className="flex justify-between items-center px-2 md:px-3 space-x-4 md:space-x-6">
-        <span className={`${toggle ? "text-white" : "text-black"}`}>Today</span>
+      <div className="flex justify-between items-center px-2 md:px-3 space-x-4 md:space-x-6 z-50">
+        <span
+          className={`${
+            toggle
+              ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-slate-300"
+              : "text-black"
+          }`}
+        >
+          Today
+        </span>
 
-        <span className={`${toggle ? "text-black" : "text-white"} pl-2`}>
+        <span
+          className={`${
+            toggle
+              ? "text-black"
+              : "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-slate-300"
+          } pl-2`}
+        >
           This week
         </span>
       </div>
