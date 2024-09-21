@@ -20,7 +20,7 @@ export function MovieCard({ movie }: { movie: Movie }) {
           <CircularProgressBar percentage={+percentage} />
         </div>
       </div>
-      <div className="py-2 h-full">
+      <div className="py-2 h-40">
         <h5 className="px-2 font-semibold pt-10 text-sm md:text-base">
           {movie.title}
         </h5>
