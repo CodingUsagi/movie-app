@@ -1,10 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import { getPopularMovies, Movie } from "../actions/movies";
 import { MovieCard } from "./_components/movie-card";
 import { Error } from "./_components/error";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
-export default async function PopularMoviesPage() {
-  const movies = (await getPopularMovies()).results;
+export default function PopularMoviesPage() {
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    getPopularMovies().then((res) => {
+      setMovies(res.results);
+    });
+  }, []);
 
   if (!movies) {
     return <Error />;
@@ -14,7 +24,7 @@ export default async function PopularMoviesPage() {
     <div className="flex flex-col justify-center items-center pt-5 lg:pt-10 w-screen overflow-x-hidden bg-white">
       <h2 className="text-black lg:text-3xl mt-2 lg:mt-10">Popular Movies</h2>
       <ul className="grid 2xl:grid-cols-6 xl:grid-cols-5 md:grid-cols-4 grid-cols-2 gap-5 lg:gap-10 text-black p-5 my-2 lg:my-10">
-        {movies.map((movie: Movie) => {
+        {movies.map((movie: Movie, index: number) => {
           let movieTitle: string = "";
 
           if (movie.title.includes("&")) {
@@ -28,11 +38,16 @@ export default async function PopularMoviesPage() {
           }
 
           return (
-            <li key={movie.title}>
+            <motion.li
+              key={movie.id}
+              initial={{ opacity: 0, translateX: -20 }}
+              animate={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.5 }}
+            >
               <Link href={`/movies/${movie.id}-${movieTitle}`}>
                 <MovieCard movie={movie} />
               </Link>
-            </li>
+            </motion.li>
           );
         })}
       </ul>

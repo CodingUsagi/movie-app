@@ -33,7 +33,7 @@ export function TrailerCarousel({ movies }: { movies: Movie[] }) {
     } else {
       controls = animate(xTranslation, [0, finalPosition], {
         ease: "linear",
-        duration: pause ? 10000 : 300,
+        duration: pause ? 100000 : 300,
         repeat: Infinity,
         repeatType: "loop",
         repeatDelay: 0,

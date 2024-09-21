@@ -12,7 +12,6 @@ export function TrendingToggle({
       className="relative text-sm md:text-base xl:text-lg w-44 md:w-48 xl:w-52 h-8 md:h-10 flex items-center bg-white border border-black rounded-full p-1 cursor-pointer"
       onClick={() => setToggle(!toggle)}
     >
-      {/* Switch */}
       <div
         className={`
             left-0 absolute bg-black h-8 md:h-10 rounded-full shadow-md transform duration-300 ease-in-out ${

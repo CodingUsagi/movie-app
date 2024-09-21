@@ -1,10 +1,20 @@
+"use client";
+
 import { getNowPlayingMovies, Movie } from "@/app/actions/movies";
 import { MovieCard } from "../_components/movie-card";
 import Link from "next/link";
 import { Error } from "../_components/error";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-export default async function NowPlayingMoviesPage() {
-  const movies = (await getNowPlayingMovies()).results;
+export default function NowPlayingMoviesPage() {
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    getNowPlayingMovies().then((res) => {
+      setMovies(res.results);
+    });
+  }, []);
 
   if (!movies) {
     return <Error />;
@@ -16,7 +26,7 @@ export default async function NowPlayingMoviesPage() {
         Now Playing Movies
       </h2>
       <ul className="grid 2xl:grid-cols-6 xl:grid-cols-5 md:grid-cols-4 grid-cols-2 gap-5 lg:gap-10 text-black p-5 my-2 lg:my-10">
-        {movies.map((movie: Movie) => {
+        {movies.map((movie: Movie, index: number) => {
           let movieTitle: string = "";
 
           if (movie.title.includes("&")) {
@@ -30,11 +40,16 @@ export default async function NowPlayingMoviesPage() {
           }
 
           return (
-            <li key={movie.id}>
+            <motion.li
+              key={movie.id}
+              initial={{ opacity: 0, translateX: -20 }}
+              animate={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.5 }}
+            >
               <Link href={`/movies/${movie.id}-${movieTitle}`}>
                 <MovieCard movie={movie} />
               </Link>
-            </li>
+            </motion.li>
           );
         })}
       </ul>
