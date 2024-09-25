@@ -15,7 +15,7 @@ export function MovieSearchCard({ result }: { result: SearchMovieResult }) {
       <Link href={`movies/${result.id}-${result.title}`}>
         <div className="relative w-28 h-40">
           <Image
-            src={imageSrc}
+            src={`/${imageSrc}`}
             alt={result.title}
             fill
             className="w-full py-[1px] rounded-l-md object-cover bg-gray-300"
