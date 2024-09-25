@@ -3,54 +3,125 @@
 import { redirect } from "next/navigation";
 
 export const getTrendingMoviesToday = async (timeWindow: string = "day") => {
-  const response = await fetch(
-    `${process.env.BASEURL}/trending/movie/${timeWindow}?api_key=${process.env.APIKEY}`
-  );
-  return response.json();
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/trending/movie/${timeWindow}?api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
 };
 
 export const getTrendingMoviesThisWeek = async (
   timeWindow: string = "week"
 ) => {
-  const response = await fetch(
-    `${process.env.BASEURL}/trending/movie/${timeWindow}?api_key=${process.env.APIKEY}`
-  );
-  return response.json();
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/trending/movie/${timeWindow}?api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
 };
 
-export const getPopularMovies = async (timeWindow: string = "week") => {
-  const response = await fetch(
-    `${process.env.BASEURL}/movie/popular?language=en-US&page=1&api_key=${process.env.APIKEY}`
-  );
-  return response.json();
+export const getPopularMovies = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/movie/popular?language=en-US&page=1&api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
+};
+
+export const getNowPlayingMovies = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/movie/now_playing?language=en-US&page=1&api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
+};
+
+export const getUpcomingMovies = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/movie/upcoming?language=en-US&page=1&api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
+};
+
+export const getTopRatedMovies = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/movie/top_rated?language=en-US&page=1&api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
 };
 
 export const getMovieVideo = async (id: number) => {
-  const response = await fetch(
-    `${process.env.BASEURL}/movie/${id}/videos?language=en-US&api_key=${process.env.APIKEY}`
-  );
-  return response.json();
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/movie/${id}/videos?language=en-US&api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
 };
 
 export const getMovieById = async (id: string) => {
-  const response = await fetch(
-    `${process.env.BASEURL}/movie/${id}?api_key=${process.env.APIKEY}`
-  );
-  return response.json();
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/movie/${id}?api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
 };
 
 export const getMovieCasts = async (id: string) => {
-  const response = await fetch(
-    `${process.env.BASEURL}/movie/${id}/credits?language=en-US'&api_key=${process.env.APIKEY}`
-  );
-  return response.json();
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/movie/${id}/credits?language=en-US'&api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
 };
 
 export const search = async (keyword: string) => {
-  const response = await fetch(
-    `${process.env.BASEURL}/search/multi?query=${keyword}&include_adult=false&language=en-US&page=1&api_key=${process.env.APIKEY}`
-  );
-  return response.json();
+  try {
+    const response = await fetch(
+      `${process.env.BASEURL}/search/multi?query=${keyword}&include_adult=false&language=en-US&page=1&api_key=${process.env.APIKEY}`
+    );
+    return response.json();
+  } catch (error) {
+    if (error instanceof Error) console.log(error.message);
+    return [];
+  }
 };
 
 export const searchFormAction = async (prevState: any, formData: FormData) => {
@@ -63,27 +134,6 @@ export const searchFormAction = async (prevState: any, formData: FormData) => {
   const searchKeyword = searchText.split(" ").join("+");
 
   redirect(`/search?query=${searchKeyword}`);
-};
-
-export const getNowPlayingMovies = async () => {
-  const response = await fetch(
-    `${process.env.BASEURL}/movie/now_playing?language=en-US&page=1&api_key=${process.env.APIKEY}`
-  );
-  return response.json();
-};
-
-export const getUpcomingMovies = async () => {
-  const response = await fetch(
-    `${process.env.BASEURL}/movie/upcoming?language=en-US&page=1&api_key=${process.env.APIKEY}`
-  );
-  return response.json();
-};
-
-export const getTopRatedMovies = async () => {
-  const response = await fetch(
-    `${process.env.BASEURL}/movie/top_rated?language=en-US&page=1&api_key=${process.env.APIKEY}`
-  );
-  return response.json();
 };
 
 export type Movie = {
